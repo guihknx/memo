@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  memorie: MyString
+  desc: MyString
+
+two:
+  memorie: MyString
+  desc: MyString

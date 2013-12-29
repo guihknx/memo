@@ -1,0 +1,52 @@
+<div class="row">
+	<div class="container">
+    <div class="col-xs-12 col-sm-6 col-md-8">
+<h1>Rails QuickMemo</h1>
+<%= form_tag(:controller => "home", :action => "addmemo", :id => 'add') do %>  
+  <%= label_tag(:message, "Qual é a memória?") %><br />  
+  <%= text_area(:memo, :memocontent, :class => 'form-control' ) %><br />  
+
+  <%= label_tag(:message, "Descrição da nota...") %><br />  
+  <%= text_area(:memo, :memodesc, :class => 'form-control' ) %><br />  
+  <%= submit_tag("Add Memo") %>  
+<% end %>
+</div>
+<div class="col-xs-6 col-md-4">
+<% memos = Memo.order('memos.id DESC').find(:all) %>
+
+<table class="table table-hover" id="memos">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Memo</th>
+            <th>Desc</th>
+            <th>Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+  <% 
+  memos.each do |memo|
+  %>
+
+        <tr>
+          <td><%=memo.id%></td>
+          <td><%=memo.memorie%></td>
+          <td><%=memo.desc%></td>
+          <td><a class="remove" href="home/remove/?id=<%=memo.id%>">x</a></td>
+        </tr>
+  <%
+  end
+  %>
+
+        </tbody>
+      </table>
+      <div class="paginator">
+				<a href="javascript:;" alt="Anterior" class='prevPage'>Anterior</a>
+				<span class='currentPage'></span> de 
+				<span class='totalPages'></span>
+				<a  href="javascript:;" alt="Próxima" class='nextPage'>Próxima</a>
+			</div>
+    </div>
+</div>
+</div>
+
